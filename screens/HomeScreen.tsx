@@ -1,6 +1,7 @@
 import {Box} from 'native-base';
 import React from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
+import Cards from '../components/Cards';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +35,9 @@ const HomeScreen = ({navigation}) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           flex: 1,
-        }}></Box>
+        }}>
+        <Cards />
+      </Box>
     </View>
   );
 };

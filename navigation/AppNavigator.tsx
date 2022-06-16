@@ -4,30 +4,16 @@ import {createStackNavigator} from '@react-navigation/stack';
 import React, {Fragment, useEffect, useState} from 'react';
 import {Keyboard, Platform, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import FavoritesScreen from '../screens/FavoritesScreen';
 import ForgotScreen from '../screens/ForgotScreen';
 import HomeScreen from '../screens/HomeScreen';
+import ItemScreen from '../screens/ItemScreen';
 import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
-const InboxScreen = () => {
-  return (
-    <View>
-      <Text>inbox screen</Text>
-    </View>
-  );
-};
-
-const FavoritesScreen = () => {
-  return (
-    <View>
-      <Text>FavoritesScreen</Text>
-    </View>
-  );
-};
 
 function MyTabs() {
   const [keyboardVisible, setKeyboardVisible] = useState(false);
@@ -62,6 +48,7 @@ function MyTabs() {
       }}>
       <Tab.Screen
         options={{
+          headerShown: false,
           tabBarLabel: 'Home',
           tabBarIcon: ({color, size}) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
@@ -75,22 +62,11 @@ function MyTabs() {
         options={{
           tabBarLabel: 'Favorites',
           tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="account" color={color} size={size} />
+            <MaterialCommunityIcons name="heart" color={color} size={size} />
           ),
         }}
         name="Favorites"
         component={FavoritesScreen}
-      />
-
-      <Tab.Screen
-        options={{
-          tabBarLabel: 'Inbox',
-          tabBarIcon: ({color, size}) => (
-            <MaterialCommunityIcons name="inbox" color={color} size={size} />
-          ),
-        }}
-        name="Inbox"
-        component={InboxScreen}
       />
 
       <Tab.Screen
@@ -100,7 +76,7 @@ function MyTabs() {
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
         }}
-        name="Settings"
+        name="Profile"
         component={SettingsScreen}
       />
     </Tab.Navigator>
@@ -113,14 +89,6 @@ const authScreens = {
   Forgot: ForgotScreen,
 };
 
-const Screen1 = () => {
-  return (
-    <View>
-      <Text>Screen1</Text>
-    </View>
-  );
-};
-
 const Screen2 = () => {
   return (
     <View>
@@ -131,9 +99,9 @@ const Screen2 = () => {
 
 const screens = {
   Screen2: {screen: Screen2, options: {headerShown: false}},
-  Screen1: {
-    screen: Screen1,
-    options: {title: 'Screen1 Title'},
+  ItemDetails: {
+    screen: ItemScreen,
+    options: {title: 'Item Title'},
   },
 };
 
